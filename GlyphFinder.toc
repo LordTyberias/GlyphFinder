@@ -1,0 +1,23 @@
+## Interface: 120001
+## Title: |cff31d6bbGlyphFinder|r
+## Author: Jaime Browne
+## Version: 1.6
+## Notes: Adds waypoints to all Glyphs
+## SavedVariables: STOPPED
+## Dependencies: TomTom
+## IconTexture: Interface\ICONS\ability_dragonriding_glyph01
+
+locales\locales.lua
+locales\local-deDE.lua
+locales\local-enUS.lua
+locales\local-esES.lua
+locales\local-esMX.lua
+locales\local-frFR.lua
+locales\local-itIT.lua
+locales\local-koKR.lua
+locales\local-ptBR.lua
+locales\local-ruRU.lua
+locales\local-zhCN.lua
+locales\local-zhTW.lua
+
+GlyphFinder.lua

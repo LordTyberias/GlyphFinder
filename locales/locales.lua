@@ -1,20 +1,15 @@
 local _, addon = ...
-addon.L = { }
+addon.L = {}
 
 local localizations = addon.L
 
 local locale = GetLocale()
-if(locale == 'enGB') then
+if locale == 'enGB' then
 	locale = 'enUS'
 end
 
-function setContains(set, key)
-	for k,v in pairs(localizations) do
-		if (v == locale) then
-			return true
-		end
-	end
-	return false
+local function hasLocale(loc)
+	return localizations[loc] ~= nil
 end
 
 setmetatable(addon.L, {
@@ -23,7 +18,7 @@ setmetatable(addon.L, {
 		return localizations[newLocale]
 	end,
 	__index = function(_, key)
-		if (not setContains(localizations, locale)) then
+		if not hasLocale(locale) then
 			locale = 'enUS' -- Default to US English if localization is not available
 		end
 		local localeTable = localizations[locale]
