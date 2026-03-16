@@ -121,17 +121,34 @@ local function GetGroupZoneName(group, fallbackIndex)
     if type(group) ~= 'table' or group[1] == nil then
         return tostring(fallbackIndex or '?')
     end
-    local mapId = group[1][4]
-    return GF:GetZoneNameById(mapId) or tostring(fallbackIndex or '?')
+
+    local mapCounts = {}
+    local bestMapId = nil
+    local bestCount = 0
+
+    for i = 1, #group do
+        local glyph = group[i]
+        local mapId = glyph and glyph[4]
+        if mapId ~= nil then
+            mapCounts[mapId] = (mapCounts[mapId] or 0) + 1
+            if mapCounts[mapId] > bestCount then
+                bestCount = mapCounts[mapId]
+                bestMapId = mapId
+            end
+        end
+    end
+
+    return GF:GetZoneNameById(bestMapId) or tostring(fallbackIndex or '?')
 end
 
 local function IterateGroups(filterSet)
     local groups = {}
     if filterSet ~= nil then
-        local setGroups = GLYPH_SETS[NormalizeSetName(filterSet)]
+        local normalized = NormalizeSetName(filterSet)
+        local setGroups = GLYPH_SETS[normalized]
         if setGroups ~= nil then
             for i = 1, #setGroups do
-                table.insert(groups, setGroups[i])
+                table.insert(groups, { setName = normalized, group = setGroups[i] })
             end
         end
         return groups
@@ -141,7 +158,7 @@ local function IterateGroups(filterSet)
         local setGroups = GLYPH_SETS[setName]
         if setGroups ~= nil then
             for i = 1, #setGroups do
-                table.insert(groups, setGroups[i])
+                table.insert(groups, { setName = setName, group = setGroups[i] })
             end
         end
     end
@@ -155,11 +172,31 @@ local function IterateGroups(filterSet)
         end
         if not known then
             for i = 1, #setGroups do
-                table.insert(groups, setGroups[i])
+                table.insert(groups, { setName = setName, group = setGroups[i] })
             end
         end
     end
     return groups
+end
+
+local function GetSetDisplayName(setName)
+    if setName == 'df' then
+        return 'Dragonflight'
+    elseif setName == 'tww' then
+        return 'The War Within'
+    elseif setName == 'midnight' then
+        return 'Midnight'
+    end
+    return tostring(setName or 'Glyphs')
+end
+
+local function GetSetColor(setName)
+    if setName == 'tww' then
+        return '|cffff9900'
+    elseif setName == 'midnight' then
+        return '|cffb366ff'
+    end
+    return '|cff31d6bb'
 end
 
 local function EnsureDataAvailable()
@@ -192,9 +229,20 @@ function GF:CheckList(filterSet)
     end
 
     local groups = IterateGroups(filterSet)
+    local setStates = {}
+    local setOrder = {}
+
     for z = 1, #groups do
-        local group = groups[z]
-        print('|cff31d6bb' .. GetGroupZoneName(group, z) .. ':')
+        local entry = groups[z]
+        local setName = entry.setName
+        local group = entry.group
+        local state = setStates[setName]
+        if state == nil then
+            state = {allComplete = true, lines = {}}
+            setStates[setName] = state
+            table.insert(setOrder, setName)
+        end
+
         local remaining = ''
         for i = 1, #group do
             local glyph = group[i]
@@ -203,6 +251,7 @@ function GF:CheckList(filterSet)
                 name = 'Unknown Glyph'
             end
             if not completed then
+                state.allComplete = false
                 if remaining == '' then
                     remaining = name
                 else
@@ -210,10 +259,23 @@ function GF:CheckList(filterSet)
                 end
             end
         end
-        if remaining == '' then
-            remaining = L["COMPLETE"]
+
+        if remaining ~= '' then
+            table.insert(state.lines, GetGroupZoneName(group, z) .. ': ' .. remaining)
         end
-        print(remaining)
+    end
+
+    for _, setName in ipairs(setOrder) do
+        local state = setStates[setName]
+        local color = GetSetColor(setName)
+        local prefix = '[' .. GetSetDisplayName(setName) .. ']'
+        if state.allComplete then
+            print(color .. prefix .. ': ' .. L["COMPLETE"])
+        else
+            for _, line in ipairs(state.lines) do
+                print(color .. prefix .. ' ' .. line)
+            end
+        end
     end
 end
 
