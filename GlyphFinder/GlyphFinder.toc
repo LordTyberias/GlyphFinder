@@ -3,17 +3,17 @@
 ## Author: LordTyberias @GitHub/Tyberîas @Die Aldor-EU
 ## Version: 1.0
 ## Notes: Adds waypoints to loaded glyph data.
-## Notes-deDE: Fügt Wegpunkte für geladene Glyphicon-Daten hinzu.
+## Notes-deDE: Fügt Wegpunkte zu geladenen Glyphendaten hinzu.
 ## Notes-enUS: Adds waypoints to loaded glyph data.
-## Notes-esES: Añade puntos de ruta para los datos de glifos cargados.
-## Notes-esMX: Añade puntos de ruta para los datos de glifos cargados.
-## Notes-frFR: Ajoute des points de passage pour les données de glyphes chargées.
-## Notes-itIT: Aggiunge punti di riferimento per i dati dei glifi caricati.
-## Notes-koKR: 로드된 문양 데이터에 대해 경유지를 추가합니다.
-## Notes-ptBR: Adiciona pontos de rota para os dados de glifos carregados.
-## Notes-ruRU: Добавляет точки маршрута для загруженных данных глифов.
+## Notes-esES: Añade puntos de ruta a los datos de glifos cargados.
+## Notes-esMX: Añade puntos de ruta a los datos de glifos cargados.
+## Notes-frFR: Ajoute des points de cheminement aux données de glyphes chargées.
+## Notes-itIT: Aggiunge punti di percorso ai dati dei glifi caricati.
+## Notes-koKR: 불러온 문양 데이터에 경유지를 추가합니다.
+## Notes-ptBR: Adiciona pontos de rota aos dados de glifos carregados.
+## Notes-ruRU: Добавляет маршрутные точки к загруженным данным глифов.
 ## Notes-zhCN: 为已加载的雕文数据添加路径点。
-## Notes-zhTW: 為已載入的雕紋資料新增路線點。
+## Notes-zhTW: 為已載入的雕紋資料新增路徑點。
 ## SavedVariables: STOPPED
 ## Dependencies: TomTom
 ## IconTexture: Interface\ICONSbility_dragonriding_glyph01
