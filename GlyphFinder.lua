@@ -8,7 +8,17 @@ local L = addon.L
 STOPPED = true
 
 -- Data
--- GLYPH_DATA is loaded from DF/DF_Glyphs.lua
+GLYPH_DATA = {}
+
+function GF:RegisterGlyphPlugin(pluginData)
+    if (type(pluginData) ~= "table") then
+        return
+    end
+
+    for i=1,#pluginData,1 do
+        table.insert(GLYPH_DATA, pluginData[i])
+    end
+end
 
 
 if (select(4, GetBuildInfo()) > 120001) then
@@ -28,8 +38,22 @@ function GF:AddWayPoint(m, x, y, zone, label)
 end
 
 function GF:GetAchievement(id)
+    if (id == nil or id == 0) then
+        return nil, false
+    end
+
     local IDNumber, Name, Points, Completed, Month, Day, Year, Description, Flags, Image, RewardText, isGuildAch = GetAchievementInfo(id)
-    return strsub(GF:Split(Name, ":")[2], 2), Completed
+
+    if (Name == nil) then
+        return nil, false
+    end
+
+    local nameParts = GF:Split(Name, ":")
+    if (nameParts[2] == nil) then
+        return Name, Completed
+    end
+
+    return strsub(nameParts[2], 2), Completed
 end
 
 function GF:GetZoneNameById(id)
@@ -43,7 +67,18 @@ function GF:CheckList()
         print (zone)
         local remaining = ''
         for i=1,#(GLYPH_DATA[z]),1 do
-            local name, completed = GF:GetAchievement(GLYPH_DATA[z][i][3])
+            local glyph = GLYPH_DATA[z][i]
+            local name, completed = GF:GetAchievement(glyph[3])
+            local fallbackName = glyph[5]
+
+            if (name == nil and fallbackName ~= nil) then
+                name = fallbackName
+            end
+
+            if (name == nil) then
+                name = "Unknown Glyph"
+            end
+
             if (not completed) then
                 if (remaining == '') then
                     remaining = remaining .. name
@@ -71,23 +106,15 @@ function GF:Split(inputstr, sep)
 end
 
 function GF:GetZoneName(zone)
-    if (zone == 1) then
-        return GF:GetZoneNameById(13644)
-    elseif (zone == 2) then
-        return GF:GetZoneNameById(13645)
-    elseif (zone == 3) then
-        return GF:GetZoneNameById(13646)
-    elseif (zone == 4) then
-        return GF:GetZoneNameById(13647)
-    elseif (zone == 5) then
-        return GF:GetZoneNameById(13862)
-    elseif (zone == 6) then
-        return GF:GetZoneNameById(13769)
-    elseif (zone == 7) then
-        return GF:GetZoneNameById(14022)
-    elseif (zone == 8) then
-        return GF:GetZoneNameById(14529)
+    if (GLYPH_DATA[zone] and GLYPH_DATA[zone][1]) then
+        local mapId = GLYPH_DATA[zone][1][4]
+        local zoneName = GF:GetZoneNameById(mapId)
+        if (zoneName ~= nil) then
+            return zoneName
+        end
     end
+
+    return tostring(zone)
 end
 
 local function MyAddonCommands(msg, editbox)
@@ -112,6 +139,12 @@ local function MyAddonCommands(msg, editbox)
         for z=1,#GLYPH_DATA,1 do
             for i=1,#(GLYPH_DATA[z]),1 do
                 local name, completed = GF:GetAchievement(GLYPH_DATA[z][i][3])
+                if (name == nil and GLYPH_DATA[z][i][5] ~= nil) then
+                    name = GLYPH_DATA[z][i][5]
+                end
+                if (name == nil) then
+                    name = "Unknown Glyph"
+                end
                 if (completed == false) then -- Haven't hit this one yet.
                     GF:AddWayPoint(GLYPH_DATA[z][i][4], GLYPH_DATA[z][i][1], GLYPH_DATA[z][i][2], zone, name)
                 end

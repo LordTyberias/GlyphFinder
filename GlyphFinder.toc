@@ -20,5 +20,7 @@ locales\local-ruRU.lua
 locales\local-zhCN.lua
 locales\local-zhTW.lua
 
-DF\DF_Glyphs.lua
 GlyphFinder.lua
+Glyph_Coords\DF-Glyphs.lua
+Glyph_Coords\TWW-Glyphs.lua
+Glyph_Coords\Midnight-Glyphs.lua

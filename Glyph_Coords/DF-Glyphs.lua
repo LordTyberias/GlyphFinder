@@ -1,5 +1,5 @@
 -- Glyph coordinate data
-GLYPH_DATA = {
+local DF_GLYPH_DATA = {
     --X coord, Y coord, achievement ID, map ID ~~ /dump C_Map.GetBestMapForUnit("player")
     { -- Waking Shores
         {74.34, 57.54, 16668, 2022}, -- Skytop Observatory Rostrum
@@ -90,3 +90,5 @@ GLYPH_DATA = {
         {61.53, 75.67, 19303, 2200} -- Wakeful Vista
     }
 }
+
+GF:RegisterGlyphPlugin(DF_GLYPH_DATA)
