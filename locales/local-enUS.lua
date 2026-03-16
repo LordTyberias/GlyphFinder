@@ -8,7 +8,6 @@ L["AUTO_ON"] = "Auto-tracking to nearest waypoint is on."
 L["COMMAND_SET"] = "Sets waypoints to all glyphs in current zone, activates tracking."
 L["COMMAND_CHECK"] = "List zones and indices of uncollected glyphs."
 L["COMMAND_AUTO"] = "Toggle auto-tracking to nearest waypoint."
-L["COMMAND_HELP"] = "Shows this help text."
 
 L["COMMAND_SET_DF"] = "Sets waypoints for all Dragonflight glyphs and activates tracking."
 

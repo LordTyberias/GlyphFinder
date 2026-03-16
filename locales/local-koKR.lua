@@ -8,7 +8,6 @@ L["AUTO_ON"] = "가장 가까운 경유지 자동 추적이 켜졌습니다."
 L["COMMAND_SET"] = "현재 지역의 모든 문양에 경유지를 설정하고 추적을 활성화합니다."
 L["COMMAND_CHECK"] = "수집하지 않은 문양의 지역과 인덱스를 표시합니다."
 L["COMMAND_AUTO"] = "가장 가까운 경유지 자동 추적을 전환합니다."
-L["COMMAND_HELP"] = "Shows this help text."
 
 L["COMMAND_SET_DF"] = "모든 Dragonflight 문양에 경유지를 설정하고 추적을 활성화합니다."
 

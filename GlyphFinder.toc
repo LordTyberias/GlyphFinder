@@ -15,7 +15,7 @@
 ## Notes-zhCN: 为所有雕文添加路径点。
 ## Notes-zhTW: 為所有雕紋新增路線點。
 ## SavedVariables: STOPPED
-## Dependencies: TomTom
+## OptionalDeps: TomTom
 ## IconTexture: Interface\ICONS\ability_dragonriding_glyph01
 
 locales\locales.lua

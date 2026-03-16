@@ -8,7 +8,6 @@ L["AUTO_ON"] = "El seguimiento automático al punto de ruta más cercano está a
 L["COMMAND_SET"] = "Establece puntos de ruta para todos los glifos de la zona actual y activa el seguimiento."
 L["COMMAND_CHECK"] = "Muestra las zonas e índices de glifos no recogidos."
 L["COMMAND_AUTO"] = "Activa o desactiva el seguimiento automático al punto de ruta más cercano."
-L["COMMAND_HELP"] = "Shows this help text."
 
 L["COMMAND_SET_DF"] = "Establece puntos de ruta para todos los glifos de Dragonflight y activa el seguimiento."
 

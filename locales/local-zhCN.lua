@@ -8,7 +8,6 @@ L["AUTO_ON"] = "最近路径点的自动追踪已开启。"
 L["COMMAND_SET"] = "为当前区域的所有雕文设置路径点并启用追踪。"
 L["COMMAND_CHECK"] = "列出尚未收集雕文的区域和索引。"
 L["COMMAND_AUTO"] = "切换最近路径点的自动追踪。"
-L["COMMAND_HELP"] = "Shows this help text."
 
 L["COMMAND_SET_DF"] = "为所有 Dragonflight 雕文设置路径点并启用追踪。"
 

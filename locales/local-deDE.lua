@@ -8,7 +8,6 @@ L["AUTO_ON"] = "Die automatische Verfolgung zum nächsten Wegpunkt ist aktiviert
 L["COMMAND_SET"] = "Setzt Wegpunkte für alle Glyphen in der aktuellen Zone und aktiviert die Verfolgung."
 L["COMMAND_CHECK"] = "Listet Zonen und Indizes der nicht gesammelten Glyphen auf."
 L["COMMAND_AUTO"] = "Schaltet die automatische Verfolgung zum nächsten Wegpunkt um."
-L["COMMAND_HELP"] = "Zeigt diesen Hilfetext an."
 
 L["COMMAND_SET_DF"] = "Setzt Wegpunkte für alle Dragonflight-Glyphen und aktiviert die Verfolgung."
 

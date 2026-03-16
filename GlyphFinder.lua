@@ -5,9 +5,12 @@ local GF = addon
 local L = addon.L
 
 -- Saved Variables
+if (STOPPED == nil) then
+    STOPPED = true
+end
 
 -- Data
-local GLYPH_DATA = {}
+GLYPH_DATA = {}
 
 function GF:RegisterGlyphPlugin(pluginData)
     if (type(pluginData) ~= "table") then
@@ -24,14 +27,7 @@ if (select(4, GetBuildInfo()) > 120001) then
     print('|cff31d6bb' .. L["OUT_OF_DATE"]) -- GlyphFinder addon out of date, please check for update.
 end
 
-if (STOPPED == nil) then
-    STOPPED = true
-end
-
-function GF:AddWayPoint(m, x, y, label)
-    if (TomTom == nil) then
-        return
-    end
+function GF:AddWayPoint(m, x, y, zone, label)
     if m and x and y then
         TomTom:AddWaypoint(m, x/100, y/100, {
             title = label,
@@ -120,111 +116,55 @@ function GF:GetZoneName(zone)
     return tostring(zone)
 end
 
-local function GetGlyphSetFilter(setName)
-    if (setName == "df") then
-        return function(achievementId)
-            return achievementId ~= nil and achievementId >= 15000 and achievementId < 40000
-        end
-    elseif (setName == "tww") then
-        return function(achievementId)
-            return achievementId ~= nil and achievementId >= 40000 and achievementId < 60000
-        end
-    elseif (setName == "midnight") then
-        return function(achievementId)
-            return achievementId ~= nil and achievementId >= 60000
-        end
-    end
-
-    return nil
-end
-
-local function PrintHelp()
-    print('|cff31d6bb/gf help: ' .. L["COMMAND_HELP"])
-    print('|cff31d6bb/gf set: ' .. L["COMMAND_SET"])
-    print('|cff31d6bb/gf set df: ' .. L["COMMAND_SET_DF"])
-    print('|cff31d6bb/gf set tww: ' .. L["COMMAND_SET_TWW"])
-    print('|cff31d6bb/gf set midnight: ' .. L["COMMAND_SET_MIDNIGHT"])
-    print('|cff31d6bb/gf check: ' .. L["COMMAND_CHECK"])
-    print('|cff31d6bb/gf auto: ' .. L["COMMAND_AUTO"])
-end
-
-local function AddMissingGlyphWaypoint(glyph)
-    local achievementId = glyph[3]
-    local name, completed = GF:GetAchievement(achievementId)
-
-    if (name == nil and glyph[5] ~= nil) then
-        name = glyph[5]
-    end
-
-    if (name == nil) then
-        name = "Unknown Glyph"
-    end
-
-    if (completed == false) then
-        GF:AddWayPoint(glyph[4], glyph[1], glyph[2], name)
-    end
-end
-
-local function SetGlyphWaypoints(filterFunc)
-    STOPPED = false
-
-    for z=1,#GLYPH_DATA,1 do
-        for i=1,#(GLYPH_DATA[z]),1 do
-            local glyph = GLYPH_DATA[z][i]
-            if (filterFunc(glyph)) then
-                AddMissingGlyphWaypoint(glyph)
-            end
-        end
-    end
-end
-
 local function MyAddonCommands(msg, editbox)
     local command, arg = strsplit(" ", strlower(strtrim(msg or "")), 2)
 
-    if command == 'check' then
+    if (command == nil or command == "" or command == 'help') then
+        print('|cff31d6bb/gf set: ' .. L["COMMAND_SET"])
+        print('|cff31d6bb/gf set df: ' .. L["COMMAND_SET_DF"])
+        print('|cff31d6bb/gf set tww: ' .. L["COMMAND_SET_TWW"])
+        print('|cff31d6bb/gf set midnight: ' .. L["COMMAND_SET_MIDNIGHT"])
+        print('|cff31d6bb/gf check: ' .. L["COMMAND_CHECK"])
+        print('|cff31d6bb/gf auto: ' .. L["COMMAND_AUTO"])
+    elseif command == 'check' then
         GF:CheckList()
     elseif command == 'auto' then
-        if (TomTom == nil) then
-            print('|cff31d6bb' .. L["REQUIRES_TOMTOM"])
-            return
-        end
         STOPPED = not STOPPED
         if (STOPPED == true) then
-            print('|cff31d6bb' .. L["AUTO_OFF"]) -- Auto-tracking to nearest waypoint off.
+            print('|cff31d6bb' .. L["AUTO_OFF"])
         else
-            print('|cff31d6bb' .. L["AUTO_ON"]) -- Auto-tracking to nearest waypoint on.
+            print('|cff31d6bb' .. L["AUTO_ON"])
         end
-    elseif command == 'help' then
-        PrintHelp()
     elseif command == 'set' then
-        if (TomTom == nil) then
-            print('|cff31d6bb' .. L["REQUIRES_TOMTOM"])
+        if (arg ~= nil and arg ~= '' and arg ~= 'df' and arg ~= 'tww' and arg ~= 'midnight') then
+            print('|cff31d6bb/gf set df: ' .. L["COMMAND_SET_DF"])
+            print('|cff31d6bb/gf set tww: ' .. L["COMMAND_SET_TWW"])
+            print('|cff31d6bb/gf set midnight: ' .. L["COMMAND_SET_MIDNIGHT"])
             return
         end
-        if (arg == nil or arg == '') then
-            local currentMapId = C_Map.GetBestMapForUnit("player")
-            if (currentMapId == nil) then
-                PrintHelp()
-                return
+
+        local zone = GetZoneText()
+        for z=1,#GLYPH_DATA,1 do
+            for i=1,#(GLYPH_DATA[z]),1 do
+                local name, completed = GF:GetAchievement(GLYPH_DATA[z][i][3])
+                if (name == nil and GLYPH_DATA[z][i][5] ~= nil) then
+                    name = GLYPH_DATA[z][i][5]
+                end
+                if (name == nil) then
+                    name = "Unknown Glyph"
+                end
+                if (completed == false) then
+                    GF:AddWayPoint(GLYPH_DATA[z][i][4], GLYPH_DATA[z][i][1], GLYPH_DATA[z][i][2], zone, name)
+                end
             end
-
-            SetGlyphWaypoints(function(glyph)
-                return glyph[4] == currentMapId
-            end)
-            return
         end
-
-        local filter = GetGlyphSetFilter(arg)
-        if (filter == nil) then
-            PrintHelp()
-            return
-        end
-
-        SetGlyphWaypoints(function(glyph)
-            return filter(glyph[3])
-        end)
     else
-        PrintHelp()
+        print('|cff31d6bb/gf set: ' .. L["COMMAND_SET"])
+        print('|cff31d6bb/gf set df: ' .. L["COMMAND_SET_DF"])
+        print('|cff31d6bb/gf set tww: ' .. L["COMMAND_SET_TWW"])
+        print('|cff31d6bb/gf set midnight: ' .. L["COMMAND_SET_MIDNIGHT"])
+        print('|cff31d6bb/gf check: ' .. L["COMMAND_CHECK"])
+        print('|cff31d6bb/gf auto: ' .. L["COMMAND_AUTO"])
     end
 end
 
@@ -235,9 +175,10 @@ local glyphFinderFrame = CreateFrame("Button", "glyphFinderFrame", UIParent, Bac
 do
     local throttle = 0.1;
     function FindClosestWayPoint(self, elapsed)
-        if (TomTom == nil or STOPPED == true) then
+        if (STOPPED == true) then
             return
         end
+        local zone = GetZoneText()
         throttle = throttle + elapsed
         if (throttle > 0.1) then
             TomTom:SetClosestWaypoint()
