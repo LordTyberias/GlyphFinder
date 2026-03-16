@@ -1,0 +1,34 @@
+## Interface: 120001
+## Title: |cff31d6bbGlyphFinder|r
+## Author: Jaime Browne
+## Version: 1.6
+## Notes: Adds waypoints to loaded glyph data.
+## Notes-deDE: Fügt Wegpunkte für geladene Glyphicon-Daten hinzu.
+## Notes-enUS: Adds waypoints to loaded glyph data.
+## Notes-esES: Añade puntos de ruta para los datos de glifos cargados.
+## Notes-esMX: Añade puntos de ruta para los datos de glifos cargados.
+## Notes-frFR: Ajoute des points de passage pour les données de glyphes chargées.
+## Notes-itIT: Aggiunge punti di riferimento per i dati dei glifi caricati.
+## Notes-koKR: 로드된 문양 데이터에 대해 경유지를 추가합니다.
+## Notes-ptBR: Adiciona pontos de rota para os dados de glifos carregados.
+## Notes-ruRU: Добавляет точки маршрута для загруженных данных глифов.
+## Notes-zhCN: 为已加载的雕文数据添加路径点。
+## Notes-zhTW: 為已載入的雕紋資料新增路線點。
+## SavedVariables: STOPPED
+## Dependencies: TomTom
+## IconTexture: Interface\ICONSbility_dragonriding_glyph01
+
+locales\locales.lua
+locales\local-deDE.lua
+locales\local-enUS.lua
+locales\local-esES.lua
+locales\local-esMX.lua
+locales\local-frFR.lua
+locales\local-itIT.lua
+locales\local-koKR.lua
+locales\local-ptBR.lua
+locales\local-ruRU.lua
+locales\local-zhCN.lua
+locales\local-zhTW.lua
+
+GlyphFinder.lua

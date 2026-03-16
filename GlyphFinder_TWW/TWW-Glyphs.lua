@@ -3,13 +3,13 @@ local TWW_GLYPH_DATA = {
     --X coord, Y coord, achievement ID, map ID ~~ /dump C_Map.GetBestMapForUnit("player")
     { -- K'aresh
         {60.9, 38.7, 42717, 2371}, -- Castigaar
-        {46.4, 58.4, 42720, 2371}, -- Eco-Dome Primus
-        {54.6, 23.3, 42718, 2371}, -- Fracture of Laacuna
-        {76.4, 46.3, 42722, 2371}, -- North Sufaad
-        {54.7, 53.1, 42719, 2371}, -- Serrated Peaks
-        {43.9, 17.0, 42723, 2371}, -- Shadow Point
-        {55.1, 67.5, 42724, 2472}, -- Tazavesh
-        {74.0, 32.5, 42721, 2371} -- The Oasis
+        {46.4, 58.4, 42718, 2371}, -- Eco-Dome Primus
+        {54.6, 23.3, 42715, 2371}, -- Fracture of Laacuna
+        {76.4, 46.3, 42719, 2371}, -- North Sufaad
+        {54.7, 53.1, 42713, 2371}, -- Serrated Peaks
+        {43.9, 17.0, 42716, 2371}, -- Shadow Point
+        {55.1, 67.5, 42712, 2472}, -- Tazavesh
+        {74.0, 32.5, 42714, 2371} -- The Oasis
     },
     { -- Isle of Dorn
         {78.2, 42.7, 40669, 2248}, -- Cinderbrew Meadery
@@ -61,4 +61,4 @@ local TWW_GLYPH_DATA = {
     }
 }
 
-GF:RegisterGlyphPlugin(TWW_GLYPH_DATA)
+GF:RegisterGlyphPlugin("tww", TWW_GLYPH_DATA)

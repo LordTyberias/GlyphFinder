@@ -91,4 +91,4 @@ local DF_GLYPH_DATA = {
     }
 }
 
-GF:RegisterGlyphPlugin(DF_GLYPH_DATA)
+GF:RegisterGlyphPlugin("df", DF_GLYPH_DATA)

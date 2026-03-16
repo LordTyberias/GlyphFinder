@@ -1,0 +1,7 @@
+## Interface: 120001
+## Title: |cff31d6bbGlyphFinder TWW Data|r
+## Author: Jaime Browne
+## Version: 1.6
+## Notes: Optional The War Within glyph data for GlyphFinder.
+## Dependencies: GlyphFinder
+TWW-Glyphs.lua

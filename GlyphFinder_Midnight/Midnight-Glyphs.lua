@@ -30,6 +30,7 @@ local MIDNIGHT_GLYPH_DATA = {
     { -- Harandar
         {54.74, 35.35, 61547, 2413}, -- Blooming Lattice
         {60.24, 44.41, 61543, 2413}, -- Blossoming Terrace
+        {47.02, 53.24, 61544, 2413}, -- The Cradle
         {44.56, 62.86, 61549, 2413}, -- Fungara Village
         {61.86, 67.50, 61551, 2413}, -- Rift of Aln
         {69.36, 45.84, 61546, 2413}, -- Roots of Amirdrassil
@@ -39,17 +40,17 @@ local MIDNIGHT_GLYPH_DATA = {
     },
     { -- Voidstorm
         {38.91, 76.11, 61563, 2405}, -- Ethereum Refinery
-        {54.95, 45.54, 61561, 2405}, -- Gnawing Reach
-        {36.28, 45.01, 61562, 2444}, -- Hanaar Outpost
-        {45.29, 52.27, 61564, 2405}, -- Master's Perch
-        {65.08, 71.93, 61565, 2405}, -- Obscurion Citadel
-        {36.08, 37.30, 61566, 2405}, -- Shadowguard Point
-        {39.90, 70.98, 61560, 2405}, -- The Bladeburrows
-        {49.25, 87.48, 61567, 2405}, -- The Gorging Pit
-        {35.67, 61.09, 61559, 2405}, -- The Ingress
-        {37.16, 49.96, 61558, 2405}, -- The Molt
-        {51.32, 62.77, 61557, 2405} -- The Voidspire
+        {54.95, 45.54, 61558, 2405}, -- Gnawing Reach
+        {36.28, 45.01, 61564, 2444}, -- Hanaar Outpost
+        {45.29, 52.27, 61562, 2405}, -- Master's Perch
+        {65.08, 71.93, 61561, 2405}, -- Obscurion Citadel
+        {36.08, 37.30, 61560, 2405}, -- Shadowguard Point
+        {39.90, 70.98, 61557, 2405}, -- The Bladeburrows
+        {49.25, 87.48, 61559, 2405}, -- The Gorging Pit
+        {35.67, 61.09, 61556, 2405}, -- The Ingress
+        {37.16, 49.96, 61555, 2405}, -- The Molt
+        {51.32, 62.77, 61552, 2405} -- The Voidspire
     }
 }
 
-GF:RegisterGlyphPlugin(MIDNIGHT_GLYPH_DATA)
+GF:RegisterGlyphPlugin("midnight", MIDNIGHT_GLYPH_DATA)
