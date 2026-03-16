@@ -1,7 +1,7 @@
 ## Interface: 120001
 ## Title: |cff31d6bbGlyphFinder DF Data|r
-## Author: Jaime Browne
-## Version: 1.6
+## Author: LordTyberias @GitHub/Tyberîas @Die Aldor-EU
+## Version: 1.0
 ## Notes: Optional Dragonflight glyph data for GlyphFinder.
 ## Dependencies: GlyphFinder
 DF-Glyphs.lua

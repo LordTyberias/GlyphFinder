@@ -1,7 +1,7 @@
 ## Interface: 120001
 ## Title: |cff31d6bbGlyphFinder|r
-## Author: Jaime Browne
-## Version: 1.6
+## Author: LordTyberias @GitHub/Tyberîas @Die Aldor-EU
+## Version: 1.0
 ## Notes: Adds waypoints to loaded glyph data.
 ## Notes-deDE: Fügt Wegpunkte für geladene Glyphicon-Daten hinzu.
 ## Notes-enUS: Adds waypoints to loaded glyph data.
