@@ -3,5 +3,16 @@
 ## Author: LordTyberias @GitHub/Tyberîas @Die Aldor-EU
 ## Version: 1.0
 ## Notes: Optional Dragonflight glyph data for GlyphFinder.
+## Notes-deDE: Optionale Dragonflight-Glyphendaten für GlyphFinder.
+## Notes-enUS: Optional Dragonflight glyph data for GlyphFinder.
+## Notes-esES: Datos de glifos opcionales de Dragonflight para GlyphFinder.
+## Notes-esMX: Datos de glifos opcionales de Dragonflight para GlyphFinder.
+## Notes-frFR: Données de glyphes Dragonflight optionnelles pour GlyphFinder.
+## Notes-itIT: Dati opzionali dei glifi di Dragonflight per GlyphFinder.
+## Notes-koKR: GlyphFinder용 선택형 Dragonflight 문양 데이터입니다.
+## Notes-ptBR: Dados opcionais de glifos de Dragonflight para o GlyphFinder.
+## Notes-ruRU: Необязательные данные глифов Dragonflight для GlyphFinder.
+## Notes-zhCN: GlyphFinder 的可选“巨龙时代”雕文数据。
+## Notes-zhTW: GlyphFinder 的選用《巨龍崛起》雕紋資料。
 ## Dependencies: GlyphFinder
 DF-Glyphs.lua

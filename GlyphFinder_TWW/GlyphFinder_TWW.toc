@@ -3,5 +3,16 @@
 ## Author: LordTyberias @GitHub/Tyberîas @Die Aldor-EU
 ## Version: 1.0
 ## Notes: Optional The War Within glyph data for GlyphFinder.
+## Notes-deDE: Optionale The War Within-Glyphendaten für GlyphFinder.
+## Notes-enUS: Optional The War Within glyph data for GlyphFinder.
+## Notes-esES: Datos de glifos opcionales de The War Within para GlyphFinder.
+## Notes-esMX: Datos de glifos opcionales de The War Within para GlyphFinder.
+## Notes-frFR: Données de glyphes The War Within optionnelles pour GlyphFinder.
+## Notes-itIT: Dati opzionali dei glifi di The War Within per GlyphFinder.
+## Notes-koKR: GlyphFinder용 선택형 The War Within 문양 데이터입니다.
+## Notes-ptBR: Dados opcionais de glifos de The War Within para o GlyphFinder.
+## Notes-ruRU: Необязательные данные глифов The War Within для GlyphFinder.
+## Notes-zhCN: GlyphFinder 的可选“地心之战”雕文数据。
+## Notes-zhTW: GlyphFinder 的選用《地心之戰》雕紋資料。
 ## Dependencies: GlyphFinder
 TWW-Glyphs.lua
