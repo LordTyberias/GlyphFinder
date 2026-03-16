@@ -8,3 +8,10 @@ L["AUTO_ON"] = "Le suivi automatique vers le point de passage le plus proche est
 L["COMMAND_SET"] = "Place des points de passage pour tous les glyphes de la zone actuelle et active le suivi."
 L["COMMAND_CHECK"] = "Affiche les zones et les indices des glyphes non collectés."
 L["COMMAND_AUTO"] = "Active ou désactive le suivi automatique vers le point de passage le plus proche."
+L["COMMAND_HELP"] = "Shows this help text."
+
+L["COMMAND_SET_DF"] = "Place des points de passage pour tous les glyphes de Dragonflight et active le suivi."
+
+L["COMMAND_SET_TWW"] = "Place des points de passage pour tous les glyphes de The War Within et active le suivi."
+
+L["COMMAND_SET_MIDNIGHT"] = "Place des points de passage pour tous les glyphes de Midnight et active le suivi."

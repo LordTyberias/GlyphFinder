@@ -2,7 +2,18 @@
 ## Title: |cff31d6bbGlyphFinder|r
 ## Author: Jaime Browne
 ## Version: 1.6
-## Notes: Adds waypoints to all Glyphs
+## Notes: Adds waypoints to all glyphs.
+## Notes-deDE: Fügt Wegpunkte für alle Glyphen hinzu.
+## Notes-enUS: Adds waypoints to all glyphs.
+## Notes-esES: Añade puntos de ruta para todos los glifos.
+## Notes-esMX: Añade puntos de ruta para todos los glifos.
+## Notes-frFR: Ajoute des points de passage pour tous les glyphes.
+## Notes-itIT: Aggiunge punti di riferimento per tutti i glifi.
+## Notes-koKR: 모든 문양에 경유지를 추가합니다.
+## Notes-ptBR: Adiciona pontos de rota para todos os glifos.
+## Notes-ruRU: Добавляет точки маршрута для всех глифов.
+## Notes-zhCN: 为所有雕文添加路径点。
+## Notes-zhTW: 為所有雕紋新增路線點。
 ## SavedVariables: STOPPED
 ## Dependencies: TomTom
 ## IconTexture: Interface\ICONS\ability_dragonriding_glyph01
